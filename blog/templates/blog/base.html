@@ -1,0 +1,65 @@
+{% load static %}
+
+
+<!DOCTYPE HTML>
+<html lang="es">
+
+    <head>
+        <meta-charset ="utf-8"> 
+       
+    <link rel="stylesheet"  href="{% static 'css/blog.css' %}">
+    </head> 
+
+    <body>
+        
+        <header>
+                <h1> Bienvenido al Music_blog !</h1>
+
+        </header>
+
+        <nav>
+            <ul>
+                <a href="{%url 'blog:index'%}" class="link"> <li> Home </li></a>
+                <a href="{%url 'blog:post_list'%}" class="link"> <li> Posts </li></a>
+                {%if not user.username%}
+                  <a href="{%url 'login'%}" class="link"> <li> login </li></a>
+                {%endif%}  
+                {%if  user.username%}
+                  <a href="{%url 'logout'%}" class="link"> <li> logout </li></a>
+              
+              <span class="secciones"> <a href="#" class="link"> <li> {{user}}
+                
+               <ul> 
+                    <li><a href= "{%url 'blog:post_create'%}"> New Post </a> </li>
+                    <li> <a href="{%url 'blog:post_drafts'%}"> Draft list </li> </a>
+                   
+                </ul>
+                {%endif%}
+        
+            </ul>    
+
+        </nav>
+        <div class="clearfix"> </div> 
+        <div class="barra">
+            <span class="esquina_izquierda"/>
+            <span class="relleno_barra"/>
+            <span class="esquina_derecha"/>
+        </div>
+       <div class="content">
+            <div class="box"> 
+            
+               {% block content%}
+
+
+               {%endblock%}
+            </div>   
+       </div>
+
+
+
+        <div class="clearfix"> </div> 
+        <footer>
+            Music_Blog , todos los derechos reservados
+        </footer>
+    </body>
+</html>

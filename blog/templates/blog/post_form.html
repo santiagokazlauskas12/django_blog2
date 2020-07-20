@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+{%block content%}
+
+{%if post_update.pk%}
+<h1> Actualiza el post </h1>
+{%else%}
+<h1> Crea el post </h1>
+{%endif%}
+
+<form method="POST" >
+    {% csrf_token %}
+    {{form.as_p}}`
+    <input type="submit" value="Crear/Actualizar"/>
+</form>
+
+{%endblock%}

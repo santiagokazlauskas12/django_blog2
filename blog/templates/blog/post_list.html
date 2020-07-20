@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+
+    {%block content%}
+        <h1> Noticias de musica </h1>    
+        <ul>
+        {% for post in post_list %}
+            {%if post.published_at%}
+            <li><a href="{%url "blog:post_detail" pk=post.pk %}">                
+               {{post.title}} </a> </br>
+                 </li>
+            {%endif%}                
+        {%endfor%}
+        </ul>
+    {%endblock%}    
